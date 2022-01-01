@@ -1,0 +1,75 @@
+<h1>Save Customer</h1>
+<form [formGroup]="customerForm" (ngSubmit)="createCustomer()">
+  <div>
+    <label>Customer Name</label>
+    <input formControlName="name" type="text">
+  </div>
+  <br>
+  <div>
+    <label>Customer Address</label>
+    <input formControlName="address" type="text">
+  </div>
+  <br>
+  <div>
+    <label>Customer Salary</label>
+    <input formControlName="salary" type="number">
+  </div>
+  <br>
+  <input type="submit" value="Submit Data">
+</form>
+<hr>
+<h1>All Customers (And Delete Implementation)</h1>
+<table style="border: none; width: 100%">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Salary</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let tempData of dataList; index as num">
+    <td>{{tempData.id}}</td>
+    <td>{{tempData.name}}</td>
+    <td>{{tempData.address}}</td>
+    <td>{{tempData.salary}}</td>
+    <td>
+      <button (click)="deleteCustomer(tempData.id)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<hr>
+<h1>Update Customer</h1>
+<form [formGroup]="customerForm" (ngSubmit)="updateCustomer()">
+  <div>
+    <label>Customer Id</label>
+    <input formControlName="id" type="number">
+  </div>
+  <div>
+    <label>Customer Name</label>
+    <input formControlName="name" type="text">
+  </div>
+  <br>
+  <div>
+    <label>Customer Address</label>
+    <input formControlName="address" type="text">
+  </div>
+  <br>
+  <div>
+    <label>Customer Salary</label>
+    <input formControlName="salary" type="number">
+  </div>
+  <br>
+  <input type="submit" value="Update Data">
+</form>
+<hr>
+<h1>Selected Customer</h1>
+<br>
+<input type="search" #data (keyup.enter)="findCustomer(data.value)">
+<p>Customer Id: {{customer?.id}}</p>
+<p>Customer Name: {{customer?.name}}</p>
+<p>Customer Address: {{customer?.address}}</p>
+<p>Customer Salary: {{customer?.salary}}</p>
